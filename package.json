@@ -21,7 +21,7 @@
   "license": "ISC",
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-customizable"
+      "path": "lib/cz"
     }
   },
   "husky": {
