@@ -1,6 +1,6 @@
 module.exports = {
   types: [
-  { value:' build', name: 'build:     编译相关文件的修改'},
+    { value: ' build', name: 'build:     编译相关文件的修改' },
     { value: 'feat', name: 'feat:     增加新功能' },
     { value: 'fix', name: 'fix:      修复bug' },
     { value: 'ui', name: 'ui:       更新UI' },
@@ -26,5 +26,6 @@ module.exports = {
     confirmCommit: '确认提交?'
   },
   allowCustomScopes: true,
-  allowBreakingChanges: ['feat', 'fix']
+  allowBreakingChanges: ['feat', 'fix'],
+  subjectLimit: 72
 }

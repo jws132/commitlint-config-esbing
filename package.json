@@ -26,7 +26,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "dependencies": {
@@ -35,6 +36,8 @@
     "husky": "^7.0.4"
   },
   "devDependencies": {
-    "@commitlint/cz-commitlint": "^16.1.0"
+    "@commitlint/cz-commitlint": "^16.1.0",
+    "commitlint-config-cz": "^0.13.3",
+    "cz-customizable": "^6.3.0"
   }
 }
