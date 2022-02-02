@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@commitlint/config-conventional', 'cz'],
+  extends: ['@commitlint/config-conventional', 'cz', 'gitmoji'],
   rules: {
     // <type> 不能为空
     'scope-empty': [2, 'always'],
@@ -42,8 +42,6 @@ module.exports = {
         'revert',
         // 代码格式修改, 注意不是 css 修改
         'style',
-        // 添加依赖
-        'add',
         // 测试用例修改
         'test',
         // Add custom type
