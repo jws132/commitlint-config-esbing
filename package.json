@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cz": "git add . && git cz"
   },
   "keywords": [
     "commitlint",
@@ -19,11 +20,6 @@
   },
   "author": "梦里小白龙",
   "license": "ISC",
-  "config": {
-    "commitizen": {
-      "path": "lib/cz"
-    }
-  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
@@ -33,7 +29,8 @@
   "dependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "right-pad": "^1.0.1"
   },
   "devDependencies": {
     "@commitlint/cz-commitlint": "^16.1.0",
