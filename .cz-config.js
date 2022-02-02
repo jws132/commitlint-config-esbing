@@ -2,7 +2,7 @@ module.exports = {
   types: [
     { value: 'build', name: '📦‍ build: 编译相关文件的修改' },
     { value: 'feat', name: '✨ feat: 新功能' },
-    { value: 'fix', name: '🐛 fix: 修复bug' },
+    { value: 'fix', name: ':bug: 修复bug' },
     { value: 'ui', name: 'ui: 更新UI' },
     { value: 'refactor', name: '💡 refactor: 代码重构' },
     { value: 'release', name: '🏹 release:  发布' },
