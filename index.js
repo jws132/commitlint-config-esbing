@@ -1,14 +1,14 @@
 module.exports = {
-  extends: ['@commitlint/config-conventional', 'cz', 'gitmoji'],
+  extends: ['@commitlint/config-conventional'],
   rules: {
     // <type> 不能为空
-    'scope-empty': [2, 'always'],
+    // 'scope-empty': [2, 'never'],
     // <type> 不能为空
     'type-empty': [2, 'never'],
     // <type>格式小写
     'type-case': [2, 'always', 'lower-case'],
     // <scope> 格式 小写
-    'scope-case': [2, 'always', 'lower-case'],
+    // 'scope-case': [2, 'never', 'lower-case'],
     // <subject> 不能为空
     'subject-empty': [2, 'never'],
     // <subject> 以.为结束标志
@@ -44,9 +44,9 @@ module.exports = {
         'style',
         // 测试用例修改
         'test',
-        // Add custom type
-        'ui', // Changes page layout and style
-        'release', // 发布
+        // 发布
+        'release',
+        'ci'
       ],
     ],
   },

@@ -1,31 +1,71 @@
-## CommitLint规范
-前端CommitLint规范
-#### 安装
+## CommitLint 规范
+
+前端 CommitLint 规范
+
+#### 相关依赖
+
+```
+npm install husky commitlint @commitlint/config-conventional  --save-dev
+
+```
+
+#### 安装组件
+
 ```shell
 npm install @jzo/commitlint-config-esbing -D
 # OR
 yarn add @jzo/commitlint-config-esbing --dev
 ```
+
 #### 使用
-在你的工程根目录下创建一个`.commitlintrc.js`配置文件
+
+在你的工程根目录下创建一个`commitlint.config.js`配置文件
 
 配置如下即可:
+
 ```js
 module.exports = {
-    "extends": "@jzo/commitlint-config-esbing"
+  extends: '@jzo/commitlint-config-esbing'
 }
 ```
 
-对于commit-msg hook我们可以使用以下命令来创建git hook所要执行的脚本
-~~~
-npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"' 
-~~~
+#### 安装 husky
+
+对于 commit-msg hook 我们可以使用以下命令来创建 git hook 所要执行的脚本
+
+依次在项目根目录执行如下两条命令
+
+```
+npx husky install
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+npm set-script cz "git add . && git cz && git push"
+```
+
+#### package.json 修改:
+
+```
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen":{
+      "path":"./node_modules/@jzo/commitlint-config-esbing/lib/cz"
+    }
+  },
+```
 
 
-:::caution
-如果项目之前安装过CommitLint相关的包，建议卸载，避免引入不必要的包。如`@commitlint/cli`、`@commitlint/config-conventional`等，直接在package.json搜索**commitlint**，相关的包全部卸载
-:::
+#### 可视化提交
+```
+npm run cz
+```
+
+
+
 #### 规范
+
 格式： `<type>[(scope)]: <description>`
 
 示例
@@ -33,6 +73,7 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```bash
 git commit -a -m 'build: xxxxx'
 git commit -a -m 'feat(cli): xxxxx'
+git commit -a -m 'feat(cli): xxxxx' --no-verify // 不验证规范
 ```
 
 字段说明
@@ -45,16 +86,16 @@ git commit -a -m 'feat(cli): xxxxx'
 
 type
 
-| type 类型 | 说明                                                                             |
-| --------- | -------------------------------------------------------------------------------- |
-| build     | 主要目的是修改项目构建系统(例如 glup，webpack，rollup 的配置等)的提交            |
-| ci        | 主要目的是修改项目继续集成流程(例如 Travis，Jenkins，GitLab CI，Circle 等)的提交 |
-| docs      | 文档更新                                                                         |
-| feat      | 新增功能                                                                         |
-| fix       | bug 修复                                                                         |
-| perf      | 优化                                                                             |
-| refactor  | 重构代码                                                                         |
-| style     | 不影响程序逻辑的代码修改(修改空白字符，补全缺失的分号等)                         |
-| test      | 新增测试用例或是更新现有测试                                                     |
-| revert    | 回滚某个更早之前的提交                                                           |
-| chore     | 不属于以上类型的其他类型(日常事务)                                               |
+| type 类型 | 说明                                                     |
+| --------- | -------------------------------------------------------- |
+| feat      | 新增功能                                                 |
+| fix       | bug 修复                                                 |
+| ui        | 更新 UI                                                  |
+| style     | 对代码含义无影响的改动（空格，格式化，等，非 UI 变动）   |
+| perf      | 提升性能的代码更改                                       |
+| docs      | 只有文档发生改变                                         |
+| test      | 添加一些缺失的测试或者修正已存在的测试                   |
+| refactor  | 重构代码                                                 |
+| chore     | 影响构建系统或外部依赖的更改（例如：gulp，npm，webpack） |
+| build     | 编译相关的修改，例如发布版本、对项目构建或者依赖的改动   |
+| revert    | 撤销上一次的提交                                         |

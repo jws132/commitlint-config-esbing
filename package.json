@@ -1,46 +1,37 @@
 {
-  "name": "commitlint-config-esbing",
-  "version": "0.0.1",
-  "description": "",
+  "name": "@jzo/commitlint-config-esbing",
+  "version": "0.0.5",
+  "description": "规范团队Git提交记录，方便回溯。",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cz": "git add . && git cz"
+    "cz": "git add . && git cz && git push",
+    "prepare": "husky install"
   },
   "keywords": [
     "commitlint",
-    "@jzo/commitlint-config-sebing"
+    "@jzo/commitlint-config-esbing"
   ],
   "files": [
     "index.js",
-    "README.md"
+    "README.md",
+    ".cz-config.js",
+    "lib"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "author": "梦里小白龙",
   "license": "ISC",
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
   "dependencies": {
-    "@commitlint/cli": "^16.1.0",
-    "@commitlint/config-conventional": "^16.0.0",
     "husky": "^7.0.4",
+    "longest": "^2.0.1",
     "right-pad": "^1.0.1"
   },
   "devDependencies": {
-    "@commitlint/cz-commitlint": "^16.1.0",
-    "commitlint-config-cz": "^0.13.3",
-    "cz-conventional-changelog": "^3.3.0",
-    "cz-customizable": "^6.3.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    }
+    "commitizen": "^4.2.4",
+    "commitlint": "^16.1.0",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0"
   }
 }
